@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Gate - Next Generation Digital Media</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Modern, Digital Color Palette */
+        :root {
+            --primary-color: #0d1a26; /* Very Dark Blue/Black */
+            --secondary-color: #1a2935; /* Dark Gray Blue */
+            --accent-color: #00e0ff; /* Bright Cyan/Electric Blue */
+            --highlight-color: #ff3366; /* Magenta/Pink Highlight */
+            --text-color: #e6e6e6; /* Light Gray Text */
+            --light-text-color: #fff;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+            overflow: hidden;
+            padding: 30px 0;
+        }
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+        section:last-child {
+            border-bottom: none;
+        }
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Header (Hero Section) */
+        header {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            filter: brightness(30%) grayscale(50%); /* Darken and desaturate for high-tech look */
+            transition: filter 0.5s ease;
+        }
+        .header-content {
+            position: relative;
+            z-index: 10;
+            color: var(--light-text-color);
+        }
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            font-size: 4.5em;
+            text-shadow: 0 0 15px var(--accent-color);
+            color: var(--accent-color);
+        }
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.6em;
+            color: var(--light-text-color);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+        }
+
+        /* About & Mission Boxes */
+        .intro-box, .mission-box {
+            background: var(--secondary-color);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 3px solid var(--highlight-color);
+            box-shadow: 0 0 15px rgba(0, 224, 255, 0.2); /* Subtle glow effect */
+            border-radius: 5px;
+        }
+        .intro-box h3, .mission-box h3 {
+            color: var(--accent-color);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.2em;
+        }
+        .intro-box ul {
+            list-style: none;
+            padding: 0;
+            columns: 2; /* Column layout for lists */
+        }
+        .intro-box ul li {
+            padding-left: 1.5em;
+            text-indent: -1.5em;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+        .intro-box ul li:before {
+            content: "//";
+            color: var(--highlight-color);
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--secondary-color);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 224, 255, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 224, 255, 0.4);
+        }
+        .service-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            filter: brightness(70%);
+        }
+        .service-card-content {
+            padding: 20px;
+        }
+        .service-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--highlight-color);
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.3em;
+        }
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .service-card ul li {
+            font-size: 0.95em;
+            margin-bottom: 3px;
+        }
+        .service-card ul li:before {
+            content: ">>";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+            margin-left: -1.5em;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 51, 102, 0.2);
+        }
+        .contact-info p {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .contact-info a:hover {
+            color: var(--highlight-color);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+            border-top: 1px solid rgba(0, 224, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img class="header-image" src="http://googleusercontent.com/image_collection/image_retrieval/15359435199285956792_0" alt="Futuristic Digital Interface">
+        <div class="header-content">
+            <h1>MEDIA GATE <span style="color: var(--highlight-color);">| NEXT GEN</span></h1>
+            <p>Pioneering Digital Solutions for the Creative Industry</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section id="about">
+            <h2>// CORE DIRECTIVES</h2>
+            <div class="intro-box">
+                <p><strong>Media Gate</strong> is an Entertainment & Media House specializing in innovative **technical and artistic solutions** for the Cultural and Creative Industry. We are the nexus where **creative inspiration meets technological innovation**.</p>
+                <p>We are a current point of reference in several sectors at an international level, leveraging the talent of professionals who engineer next-generation solutions for informing, entertaining, and thrilling the audience.</p>
+                
+                <h3>Primary Specializations:</h3>
+                <ul>
+                    <li>Audiovisual & Audio Production</li>
+                    <li>Digital Visual Effects (VFX)</li>
+                    <li>Virtual Reconstructions & Animation</li>
+                    <li>Software & Mobile Applications</li>
+                </ul>
+            </div>
+
+            <div class="mission-box">
+                <h3>_MISSION STATEMENT</h3>
+                <p>Media Gate operates as a fusion point between **art and science**, designed to rapidly expand the frontiers of entertainment and multimedia across **Libya and the MENA region**. Our constant research activity develops new solutions based on the synergy of **heritage, creativity, and technology**.</p>
+            </div>
+        </section>
+
+        <section id="facilities">
+            <h2>// INFRASTRUCTURE</h2>
+            <div class="intro-box">
+                <p>Our operational base in **Tripoli** is a modern structure housing dedicated **sound stages** and specialized laboratories, all equipped with the most advanced technologies available on the market.</p>
+                <p>Our facilities enable end-to-end technical production: Video editing, Color correction, VFX production, recording, sound editing, mixing, and mastering, alongside full Computer Graphics and multimedia development.</p>
+                <p>Our integrated team of **3D/digital artists, programmers, engineers, and cultural heritage experts** develops high-content products using **cutting-edge tools** and innovative working methods.</p>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>// ACTIVITY SECTORS</h2>
+            <div class="services-grid">
+
+                <div class="service-card">
+                    <img class="service-card-image" src="https://images.unsplash.com/photo-1550993952-520e7e449a0d?fit=crop&w=600&h=180" alt="3D wireframe render">
+                    <div class="service-card-content">
+                        <h3>Cinema & Visual Effects</h3>
+                        <p>End-to-end cinema production cycle management. Specializing in the creation of photo-realistic **virtual sets** and **next-generation visual effects**.</p>
+                        <ul>
+                            <li>Pre/Production/Post Production</li>
+                            <li>Visual Effects & Computer Graphics</li>
+                            <li>Sound Stages & Rental Service</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img class="service-card-image" src="https://images.unsplash.com/photo-1542382025-a134a6549c44?fit=crop&w=600&h=180" alt="Broadcast monitor wall">
+                    <div class="service-card-content">
+                        <h3>TV & Broadcast Solutions</h3>
+                        <p>Delivering high-quality Broadcast services, TV productions, and technical-scientific institutional videos for public and private sectors.</p>
+                        <ul>
+                            <li>TV series, Fiction, & Documentaries</li>
+                            <li>Commercials & Videoclips</li>
+                            <li>Live TV & TV Format development</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img class="service-card-image" src="https://images.unsplash.com/photo-1588636402448-d3e2646d9d15?fit=crop&w=600&h=180" alt="Augmented reality layer on statue">
+                    <div class="service-card-content">
+                        <h3>Digital Heritage & VR</h3>
+                        <p>Enhancing cultural heritage by exploiting new technologies to provide engaging, **immersive 3D virtual experiences** and digital preservation solutions.</p>
+                        <ul>
+                            <li>3D/Augmented/Virtual Reality</li>
+                            <li>Multimedia Museums & Digital Tourism</li>
+                            <li>Lidar and Photogrammetric surveys</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img class="service-card-image" src="https://images.unsplash.com/photo-1620287123996-59c4722c1766?fit=crop&w=600&h=180" alt="Code running on multiple screens">
+                    <div class="service-card-content">
+                        <h3>Games, Apps & Multimedia</h3>
+                        <p>Developing faithful virtual reconstructions, interactive simulations, and custom software and mobile applications for the entertainment industry.</p>
+                        <ul>
+                            <li>Immersive Virtual Reality Games</li>
+                            <li>Mobile and Software Applications</li>
+                            <li>Virtual Sets & Interactive Design</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img class="service-card-image" src="https://images.unsplash.com/photo-1522881387216-928956973e20?fit=crop&w=600&h=180" alt="Sound recording console with neon light">
+                    <div class="service-card-content">
+                        <h3>Music Production</h3>
+                        <p>A hub for international musical tradition and new production trends, offering state-of-the-art recording and post-production facilities.</p>
+                        <ul>
+                            <li>Recording, Mixing, & Mastering</li>
+                            <li>Videoclip Production</li>
+                            <li>Live Events & Visual Management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>// CONTACT NEXUS</h2>
+            <div class="contact-info">
+                <p><strong>HEADQUARTERS:</strong> Nofleen, Tripoli</p>
+                <p><strong>STUDIOS:</strong> Industrial zone, Tripoli</p>
+                <p><strong>TEL:</strong> 218 91 000 0000</p>
+                <p><strong>EMAIL:</strong> <a href="mailto:info@gatesofafrica.ly">info@gatesofafrica.ly</a></p>
+                <p><strong>WEB:</strong> <a href="http://www.gatesofafrica.ly">www.gatesofafrica.ly</a></p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; MEDIA GATE. System Operational. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
